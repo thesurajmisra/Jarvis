@@ -40,7 +40,7 @@ def takeCommand():
     try:
         print('Recognizing...')
         query = r.recognize_google(audio,language='en-in')
-        print('User said:',query) 
+        print('Suraj:',query) 
         
     except Exception as e:
        # print(e)
@@ -60,7 +60,7 @@ def sendMail(to,content):
     
 if __name__=="__main__":
     wishMe()
-    if 1:
+    while True:
         
         query = takeCommand().lower()
         
@@ -105,7 +105,8 @@ if __name__=="__main__":
             except Exception as e:
                     print(e)
                     speak("Sorry, I am not able to send this mail")
-                    
+        elif 'band ho jao' in query:
+            exit()            
                        
                 
                          
