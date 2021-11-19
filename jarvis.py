@@ -1,6 +1,9 @@
+import os
 import speech_recognition as sr
 import pyttsx3
 import datetime
+import wikipedia
+import webbrowser
 
 
 engine = pyttsx3.init('sapi5')
@@ -48,4 +51,41 @@ def takeCommand():
 
 if __name__=="__main__":
     wishMe()
-    takeCommand()
+    if 1:
+        
+        query = takeCommand().lower()
+        
+        #Logic for executing task based on query
+        if 'wikipedia' in query:
+            speak('Searching Wikipedia...')
+            query = query.replace("wikipedia","")
+            results = wikipedia.summary(query, sentences = 2)
+            speak("According to wikipedia:")
+            print(results)
+            speak(results)
+         
+        elif 'open youtube' in query:
+            webbrowser.open("youtube.com")
+        
+        elif 'open google' in query:
+            webbrowser.open("google.com")
+            
+        elif 'open stackoverflow' in query:
+            webbrowser.open("stackoverflow.com") 
+        elif 'play music' in query:
+            music_dir = 'E:\\Suraj\\Favorites'
+            songs = os.listdir(music_dir)
+            print(songs)
+            os.startfile(os.path.join(music_dir,songs[0]))
+        elif 'the time' in query:
+            strTime = datetime.datetime.now().strftime("%H:%M:%S")
+            print(strTime)
+            speak('Sir, the time is: ',strTime)
+        
+        elif 'open code' in query:
+                codePath = "C:\\Users\\misra\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
+                os.startfile(codePath)
+                
+                
+                
+                         
