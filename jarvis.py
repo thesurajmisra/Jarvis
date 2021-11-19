@@ -89,7 +89,7 @@ if __name__=="__main__":
         elif 'the time' in query:
             strTime = datetime.datetime.now().strftime("%H:%M:%S")
             print(strTime)
-            speak('Sir, the time is: ',strTime)
+            speak(f"Sir, the time is {strTime}")
         
         elif 'open code' in query:
                 codePath = "C:\\Users\\misra\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
@@ -105,7 +105,7 @@ if __name__=="__main__":
             except Exception as e:
                     print(e)
                     speak("Sorry, I am not able to send this mail")
-        elif 'please stop' in query:
+        elif 'quit' in query:
             exit()            
                        
                 
