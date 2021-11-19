@@ -105,7 +105,7 @@ if __name__=="__main__":
             except Exception as e:
                     print(e)
                     speak("Sorry, I am not able to send this mail")
-        elif 'band ho jao' in query:
+        elif 'please stop' in query:
             exit()            
                        
                 
