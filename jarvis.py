@@ -4,6 +4,7 @@ import pyttsx3
 import datetime
 import wikipedia
 import webbrowser
+import smtplib
 
 
 engine = pyttsx3.init('sapi5')
@@ -25,7 +26,7 @@ def wishMe():
         speak('Good Afternoon')  
     else:
         speak('Good Evening') 
-    speak('I am Jarvis sir, Please tell me how may I help you')         
+    speak('I am Your assistant sir, Please tell me how may I help you')         
 
 def takeCommand():
     #it takes voice input from user and return string output
@@ -48,7 +49,15 @@ def takeCommand():
         return 'None'
     return query        
         
-
+def sendMail(to,content):
+    server = smtplib.SMTP('smtp.gmail.com',587)
+    server.ehlo()
+    server.starttls()
+    server.login("misrasuraj11@gmail.com","yourpassword")
+    server.sendmail('misrasuraj11@gmail.com',to,content)
+    server.close()
+    
+    
 if __name__=="__main__":
     wishMe()
     if 1:
@@ -84,8 +93,19 @@ if __name__=="__main__":
         
         elif 'open code' in query:
                 codePath = "C:\\Users\\misra\\AppData\\Local\\Programs\\Microsoft VS Code\\Code.exe"
-                os.startfile(codePath)
+                os.startfile(codePath)        
                 
-                
+        elif 'send mail' in query:
+            try:
+                speak("what should I say...?")
+                content = takeCommand()
+                to = "sm314310@bbdu.ac.in"
+                sendMail(to,content)
+                speak("Mail has been sent!")
+            except Exception as e:
+                    print(e)
+                    speak("Sorry, I am not able to send this mail")
+                    
+                       
                 
                          
